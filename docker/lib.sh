@@ -42,8 +42,22 @@ purge_packages() {
     fi
 }
 
+# any centos
 if_centos() {
     if grep -q -i centos /etc/os-release; then
+        eval "${@}"
+    fi
+}
+
+# a centos version
+if_centos_v() {
+    source /etc/os-release
+    local v=${1}
+    shift
+
+    echo "$ID $VERSION $v"
+
+    if test "$ID" == "centos" -a "$VERSION" == "$v"; then
         eval "${@}"
     fi
 }

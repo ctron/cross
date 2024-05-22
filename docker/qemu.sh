@@ -146,15 +146,17 @@ main() {
         libtool \
         make \
         patch \
-        python3 \
+        python3
+
+    if_centos_v 7 install_packages \
+        glib2-devel \
+        glib2-static
 
     if_centos install_packages \
         gcc-c++ \
         pkgconfig \
         xz \
-        glib2-devel \
-        glib2-static \
-        glibc-static \
+        glibc-static
         libattr-devel \
         libcap-devel \
         libfdt-devel \
